@@ -47,6 +47,23 @@ public class ProductRepositoryTests {
 
     }
 
+    @Test
+    public void findByShouldReturnNotNullWhenIdExists() {
+
+        Optional<Product> result = productRepository.findById(existingId);
+
+        Assertions.assertTrue(result.isPresent());
+
+    }
+
+    @Test
+    public void findByShouldReturnNullWhenIdNotExist() {
+
+        Optional<Product> result = productRepository.findById(89L);
+
+        Assertions.assertTrue(result.isEmpty());
+
+    }
 
 
 }

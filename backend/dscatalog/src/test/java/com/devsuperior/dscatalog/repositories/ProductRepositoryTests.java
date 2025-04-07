@@ -1,6 +1,7 @@
 package com.devsuperior.dscatalog.repositories;
 
 import com.devsuperior.dscatalog.entities.Product;
+import com.devsuperior.dscatalog.tests.Factory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,12 +15,27 @@ public class ProductRepositoryTests {
 
     @Autowired
     private ProductRepository productRepository;
-
     private long existingId;
+    private long countTotalproduct;
 
     @BeforeEach
     void setUp() throws Exception {
         existingId = 1;
+        countTotalproduct = 25L;
+    }
+
+    @Test
+    public void saveShouldPersistWithAutoIncrementWhenIdIsNull() {
+
+        Product product = Factory.createProduct();
+
+        product.setId(null);
+
+        product = productRepository.save(product);
+
+        Assertions.assertNotNull(product.getId());
+        Assertions.assertEquals(countTotalproduct + 1, product.getId());
+
     }
 
     @Test
@@ -30,5 +46,7 @@ public class ProductRepositoryTests {
       Assertions.assertFalse(result.isPresent());
 
     }
+
+
 
 }

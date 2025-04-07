@@ -1,0 +1,31 @@
+# Compilados
+*.class
+
+# Logs
+*.log
+
+# Diretório de build do Maven
+/target/
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Arquivos gerados
+*.jar
+*.war
+*.ear
+
+# Arquivos temporários de edição
+*.swp
+*~
